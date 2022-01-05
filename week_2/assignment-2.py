@@ -17,7 +17,7 @@ def avg(data):
     salaryTotal = 0
     for employees in data['employees']:
        salaryTotal+=employees['salary']
-    print(float(salaryTotal)/data['count'])
+    print(format(float(salaryTotal)/data['count'],'.12f'))
 avg({
 "count":3,
 "employees":[
