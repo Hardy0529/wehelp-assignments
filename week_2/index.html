@@ -52,7 +52,13 @@
       function maxProduct(nums) {
         bubbleSort(nums);
         numsMax = nums.slice(-2);
-        console.log(numsMax[0] * numsMax[1]);
+        numsMin = nums.slice(0, 2);
+
+        if (numsMax[0] * numsMax[1] >= numsMin[0] * numsMin[1]) {
+          console.log(numsMax[0] * numsMax[1]);
+        } else {
+          console.log(numsMin[0] * numsMin[1]);
+        }
       }
       function bubbleSort(arry) {
         for (let i = arry.length - 1; i >= 1; i--) {
@@ -75,7 +81,7 @@
       maxProduct([10, -20, 0, 3]); // 得到 30
       maxProduct([-1, 2]); // 得到 -2
       maxProduct([-1, 0, 2]); // 得到 0
-      maxProduct([-1, -2, 0]); // 得到 0
+      maxProduct([-1, -2, 0]); // 得到 2
 
       // 4
       function twoSum(nums, target) {
