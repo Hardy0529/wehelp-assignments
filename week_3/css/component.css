@@ -1,0 +1,227 @@
+:root {
+	--bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--bs-body-font-family: var(--bs-font-sans-serif);
+	--bs-body-font-size: 20px;
+    --bs-body-font-weight: 400;
+    --bs-body-line-height: 1.5;
+	--bs-body-color: #212529;
+	
+}
+/*-------------------------*/
+/* $Globel
+---------------------------*/
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+html,body{
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+}
+/*-------------------------*/
+/* $Layout
+---------------------------*/
+.section__inner{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+@media (max-width: 768px){
+	.section__inner{
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+}
+/*-------------------------*/
+/* $imgobx 
+---------------------------*/
+/* imgbox */
+.imgbox{
+	width: 100%;
+	display: block;
+	overflow: hidden;
+}
+.imgbox__inner{
+	width: 100%;
+	height: 0;
+	position: relative;
+}
+.imgbox__inner-4-3{
+	padding-top: calc(100% * 3 / 4);
+}
+.imgbox__inner .image{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+}
+/*-------------------------*/
+/* $Navbar 
+---------------------------*/
+.header {
+	/* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+
+	background-color: #f8f9fa;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+	
+	padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+/* logo */
+.navbar__logo {
+	color: rgba(0, 0, 0, 0.9);
+	text-decoration: none;
+	font-size: 1rem;
+}
+/* navbar */
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+	margin-top: 0.5rem;
+	padding-top: 0.5rem;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 601px) {
+	.navbar-nav {
+		margin: 0px;
+		padding: 0px;
+		border: 0px;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+	}
+}
+.navbar-nav .nav-item .nav-link {
+	display: block;
+	padding: 15px;
+	color: rgba(0, 0, 0, 0.55);
+	line-height: 30px;
+	font-size: 1rem;
+	text-decoration: none;
+}
+/* menu-toggle */
+.menu-toggle{
+	padding: 12px;
+    padding-top: 16px;
+	border: none;
+	background-color: transparent;
+}
+@media (min-width: 601px){
+	.menu-toggle{
+		display: none;
+	}
+}
+.menu-toggle span{
+	display: block;
+    height: 2px;
+    width: 20px;
+	background-color: rgba(0, 0, 0, 0.55);
+	margin-bottom: 4px;
+	transition: all 0.3s;
+}
+
+.menu-toggle:hover span:nth-child(1){
+    transform: translateX(-20%);
+}
+.menu-toggle:hover span:nth-child(3){
+    transform: translateX(20%);
+}
+
+/* collapse */
+.collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+@media (min-width: 601px){
+	.collapse {
+		display: flex !important;
+		flex-basis: auto;
+		justify-content: flex-end;
+	}
+}
+
+/* collapse show */
+@media (max-width: 600px) {
+	.navbar-collapse {
+		margin-right: -15px;
+		margin-left: -15px;
+	}	
+	.collapse {
+		height: 0px;
+		overflow: hidden;
+	}
+	.collapse.show {
+		height: auto;
+		overflow: hidden;
+	}
+}
+
+
+/*-------------------------*/
+/* $Mainvisual 
+---------------------------*/
+section.section_mainvisual {
+	width: 100%;
+	min-height: 300px;
+	background-color: #D5E3F5;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.section_mainvisual .mainvisual-content {
+	font-size: 2rem;
+	text-align: center;
+}
+
+/*-------------------------*/
+/* $Gallery 
+---------------------------*/
+section.section_gallery{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+@media (max-width: 768px){
+	section.section_gallery{
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+}
+.gallery-card {
+	margin-bottom: 40px;
+	position: relative;
+}
+.gallery-card_content {
+	background-color: #D5E3F5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px;
+
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 0px;
+}
