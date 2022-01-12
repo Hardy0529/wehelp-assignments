@@ -8,9 +8,8 @@ let handler = function () {
 
 menu_toggle.addEventListener("click", handler);
 
-// showMore;
+// showMoreBtn;
 btnMore = document.querySelector("#btnMore");
-
 btnMore.addEventListener("click", showMore);
 
 // 展示更多
@@ -26,10 +25,11 @@ function showMore() {
 function reqListener() {
   let data = this.responseText;
   var plainObj = JSON.parse(data);
+  let obj = plainObj.result.results;
+
+  // 隱藏展示更多按鈕
   let gallery_item = document.querySelector("#gallery_item");
 
-  obj = plainObj.result.results;
-  // 隱藏展示更多按鈕
   if (showEnd > obj.length) {
     showEnd = obj.length;
     btnMore.classList.add("u-hidden");
