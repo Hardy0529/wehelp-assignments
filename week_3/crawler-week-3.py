@@ -20,7 +20,7 @@ def main():
             dataSeparation = list["address"].split()
             dataSeparationFirst = dataSeparation[1]
             dataArea = dataSeparation[1].index("區")
-            dataAddress = dataSeparationFirst[0 : dataArea + 1]
+            dataAddress = dataSeparationFirst[0: dataArea + 1]
 
             # 抓取圖片
             imgSeparation = list["file"].split("https")
@@ -28,28 +28,16 @@ def main():
             img = "https" + imgSeparationFirst
 
             file.write(
-                "{"
-                + "stitle"
-                + ":"
-                + list["stitle"]
-                + ", "
-                + "area"
-                + ":"
+
+                list["stitle"]
+                + ","
                 + dataAddress
-                + ", "
-                + "longitude"
-                + ":"
+                + ","
                 + list["longitude"]
-                + ", "
-                + "latitude"
-                + ":"
+                + ","
                 + list["latitude"]
-                + ", "
-                + "image"
-                + ":"
+                + ","
                 + img
-                + ", "
-                + "}"
                 + "\n"
             )
 
