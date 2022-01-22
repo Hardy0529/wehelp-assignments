@@ -6,16 +6,13 @@ import json
 
 
 def main():
-    context = ssl._create_unverified_context()
-    req = urllib.request.urlopen(
-        "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json",
-        context=context,
-    )
-    data = json.load(req)
-    clist = data["result"]["results"]
+    ssl._create_default_https_context = ssl._create_unverified_context
+    with urllib.request.urlopen("https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json") as req:
+        data = json.load(req)
+        lists = data["result"]["results"]
 
     with open("data.csv", mode="w") as file:
-        for list in clist:
+        for list in lists:
             # 抓取區域
             dataSeparation = list["address"].split()
             dataSeparationFirst = dataSeparation[1]
@@ -28,7 +25,6 @@ def main():
             img = "https" + imgSeparationFirst
 
             file.write(
-
                 list["stitle"]
                 + ","
                 + dataAddress

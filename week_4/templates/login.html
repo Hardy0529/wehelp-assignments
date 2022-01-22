@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Week 4</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='component.css') }}"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="register">
+        <div class="register-header">歡迎光臨，請註冊登入系統</div>
+        <div class="form-container">
+          <div class="register-title">登入系統</div>
+          <form action="/signin" method="post">
+            <div class="register-row">
+              <label for="inputAccount">帳號</label>
+              <input type="text" id="inputAccount" name="account" />
+            </div>
+            <div class="register-row">
+              <label for="inputPassword">密碼</label>
+              <input type="text" id="inputPassword" name="password" />
+            </div>
+
+            <div class="btn-group btn-group--center form__btn-group">
+              <button
+                type="submit"
+                class="btn btn--primary btn--sm"
+                id="btnMore"
+              >
+                登入
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

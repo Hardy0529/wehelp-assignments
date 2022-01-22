@@ -1,0 +1,189 @@
+:root {
+  --bs-primary: #263343;
+  --bs-light: hsl(210, 17%, 98%);
+  --bs-dark: #1c1c1c;
+
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+/*-------------------------*/
+/* $Globel
+---------------------------*/
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+html,
+body {
+  font-family: var(--bs-font-sans-serif);
+  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+}
+/*-------------------------*/
+/* $Utility 
+---------------------------*/
+.u-push-right {
+  float: right !important;
+}
+.u-pull-left {
+  float: left !important;
+}
+.u-text-center {
+  text-align: center !important;
+}
+
+/*-------------------------*/
+/* btn
+---------------------------*/
+/* normal */
+.btn {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin: 0;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  min-width: 64px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 500;
+  font-family: var(--bs-font-sans-serif);
+  letter-spacing: 0;
+  text-decoration: none;
+  background-color: var(--bs-primary);
+  border: 0;
+  border-radius: 18px;
+  outline: 0;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  user-drag: none;
+  transition: all 0.3s;
+}
+.btn--primary {
+  color: var(--bs-light);
+}
+.btn.btn--primary {
+  background-color: var(--bs-primary);
+}
+.btn.btn--primary:hover,
+.btn.btn--primary:active {
+  background-color: var(--bs-primary);
+}
+.btn.btn--lg {
+  font-size: 20px;
+  line-height: 56px;
+  height: 56px;
+  font-weight: 400;
+  border-radius: 28px;
+  padding: 0 64px;
+}
+.btn.btn--md {
+  font-size: 18px;
+  line-height: 48px;
+  height: 48px;
+  font-weight: 400;
+  border-radius: 24px;
+  padding: 0 64px;
+}
+.btn.btn--sm {
+  font-size: 16px;
+  line-height: 32px;
+  height: 40px;
+  font-weight: 400;
+  border-radius: 16px;
+  padding: 0 32px;
+}
+.btn-group .btn {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.btn-group--center {
+  text-align: center;
+}
+
+/*-------------------------*/
+/* $Register
+---------------------------*/
+
+.register .register-header {
+  background-color: var(--bs-primary);
+  color: var(--bs-light);
+  text-align: center;
+  padding: 20px;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.register .form-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 320px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.register .form-container .register-title {
+  color: var(--bs-primary);
+  display: block;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.3em;
+  padding: 24px 24px 24px 24px;
+}
+.register .form-container .register-row {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+/*-------------------------*/
+/* form
+---------------------------*/
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+textarea {
+  padding: 8px 16px;
+  display: inline-block;
+  border: 1px solid var(--bs-primary);
+  border-radius: 4px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 16px;
+  background-color: inherit;
+  color: var(--bs-primary);
+}
+textarea {
+  resize: none;
+}
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: 0;
+  border: 1px solid var(--bs-primary);
+}
+label {
+  font-size: 1.1rem;
+  padding: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--bs-primary);
+  white-space: nowrap;
+}
+.form__btn-group {
+  margin-top: 8px;
+}
