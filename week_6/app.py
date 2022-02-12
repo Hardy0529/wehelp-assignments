@@ -1,5 +1,4 @@
-
-from flask import Flask, redirect, template_rendered, url_for, render_template, request, session
+from flask import Flask, redirect, url_for, render_template, request, session
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -27,8 +26,9 @@ def register():
     registerAccount = request.form["account"]
     registerPassword = request.form["password"]
 
-    mycursor.execute(
-        "SELECT `name` FROM `member`  WHERE `username` = '" + registerAccount + "';")
+    selectSql = "SELECT `name` FROM `member`  WHERE `username` = %s"
+    adr = (registerAccount,)
+    mycursor.execute(selectSql, adr)
 
     data = mycursor.fetchone()
     if not data == None:
@@ -37,14 +37,15 @@ def register():
         if registerName == "" or registerAccount == "" or registerPassword == "":
             return redirect(url_for("erro", message="帳號、密碼不得為空值"))
         else:
-            mycursor.execute(
-                "INSERT INTO `member`(`name`,`username`,`password`) VALUES('"+registerName+"','"+registerAccount+"','"+registerPassword+"')")
+            sql = "INSERT INTO `member`(`name`,`username`,`password`) VALUES(%s,%s,%s)"
+            val = (registerName, registerAccount, registerPassword)
+            mycursor.execute(sql, val)
             mydb.commit()
 
     return redirect(url_for("home"))
 
 
-@ app.route("/signin", methods=["POST"])
+@app.route("/signin", methods=["POST"])
 def login():
 
     loginAccount = request.form["account"]
@@ -53,30 +54,24 @@ def login():
     if loginAccount == "" or loginPassword == "":
         return redirect(url_for("erro", message="請輸入帳號、密碼"))
     else:
-        mycursor.execute(
-            "SELECT `username` FROM `member`  WHERE `username` = '" + loginAccount + "';")
-        account = mycursor.fetchone()
+        selectSql = "SELECT `name`,`username`,`password` FROM `member`  WHERE `username` = %s"
+        adr = (loginAccount,)
+        mycursor.execute(selectSql, adr)
+        accountQuery = mycursor.fetchone()
 
-        mycursor.execute(
-            "SELECT `password` FROM `member`  WHERE `username` = '" + loginAccount + "';")
-        password = mycursor.fetchone()
-
-        mycursor.execute(
-            "SELECT `name` FROM `member`  WHERE `username` = '" + loginAccount + "';")
-        username = mycursor.fetchone()
-
-        if account == None:
+        if accountQuery == None:
             return redirect(url_for("erro", message="帳號、或密碼輸入錯誤"))
         else:
-            account = account[0]
-            password = password[0]
-            username = username[0]
-            if loginAccount == account and loginPassword == password:
-                account = loginAccount
-                session["account"] = account
 
-                password = loginPassword
-                session["password"] = password
+            username = accountQuery[0]
+            account = accountQuery[1]
+            password = accountQuery[2]
+
+            if loginAccount == account and loginPassword == password:
+
+                session["account"] = loginAccount
+
+                session["password"] = loginPassword
 
                 session["username"] = username
 
@@ -86,7 +81,7 @@ def login():
                 return redirect(url_for("erro", message="帳號、或密碼輸入錯誤"))
 
 
-@ app.route("/member/")
+@app.route("/member/")
 def user():
 
     if "account" in session:
@@ -97,14 +92,14 @@ def user():
         return redirect(url_for("home"))
 
 
-@ app.route("/signout")
+@app.route("/signout")
 def logout():
 
     session.pop("account", None)
     return redirect(url_for("home"))
 
 
-@ app.route("/erro/")
+@app.route("/erro/")
 def erro():
     message = request.args.get("message", "")
     return render_template("erro.html", message=message)
