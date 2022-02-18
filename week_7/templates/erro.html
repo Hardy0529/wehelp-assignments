@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Week 6</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/component.css') }}"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="register">
+        <div class="register-header">失敗頁面</div>
+        <div class="form-container">
+          <div class="register-title">{{message}}</div>
+          <div class="u-text-center">
+            <a href="/">回首頁 </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

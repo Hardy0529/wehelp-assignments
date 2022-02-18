@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment Week 6</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/component.css') }}"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="register">
+        <div class="register-header">歡迎光臨，這是會員頁</div>
+
+        <!-- Start sign in suceesfully -->
+        <div class="form-container">
+          <div class="register-title">{{member}}，歡迎登入系統</div>
+          <div class="u-text-center">
+            <a href="/signout">登出系統 </a>
+          </div>
+        </div>
+        <!-- End sign in suceesfully -->
+
+        <!-- Start Query member information -->
+        <div class="form-container">
+          <div class="register-title">查詢會員姓名</div>
+          <div class="register-row member_register">
+            <input type="text" id="queryUserName" />
+            <button
+              type="button"
+              class="btn btn--primary"
+              id="queryUserNameButton"
+            >
+              查詢
+            </button>
+          </div>
+          <div class="queryUserNameShow" id="queryUserNameShow"></div>
+        </div>
+        <!-- End Query member information -->
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  </body>
+</html>
