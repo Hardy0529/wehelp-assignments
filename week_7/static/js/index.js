@@ -5,7 +5,7 @@ function queryUserNameFun(queryUserName) {
     var req = new XMLHttpRequest();
     req.open(
       "get",
-      "http://127.0.0.1:3000/api/member?username=" + queryUserName
+      "http://127.0.0.1:3000/api/members?username=" + queryUserName
     );
     req.addEventListener("load", function () {
       resolve(this.responseText);

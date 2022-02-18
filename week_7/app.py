@@ -85,7 +85,7 @@ def user():
         return redirect(url_for("home"))
 
 
-@app.route("/api/member", methods=["GET", "POST"])
+@app.route("/api/members", methods=["GET", "POST"])
 def get_stores():
     if request.method == "GET":
         registerAccount = request.args.get("username")
