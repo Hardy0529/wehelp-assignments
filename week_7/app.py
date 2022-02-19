@@ -85,25 +85,46 @@ def user():
         return redirect(url_for("home"))
 
 
-@app.route("/api/members", methods=["GET", "POST"])
-def get_stores():
-    if request.method == "GET":
-        registerAccount = request.args.get("username")
+@app.route("/api/members")
+def queryUserName():
+    registerAccount = request.args.get("username")
 
-        selectSqla = "SELECT `id`,`name`,`username` FROM `member`  WHERE `username` = %s "
-        adra = (registerAccount,)
-        mycursor.execute(selectSqla, adra)
-        data = mycursor.fetchone()
+    selectSqla = "SELECT `id`,`name`,`username` FROM `member`  WHERE `username` = %s "
+    adra = (registerAccount,)
+    mycursor.execute(selectSqla, adra)
+    data = mycursor.fetchone()
 
-        if data == None:
-            return jsonify({"data": None})
-        else:
-            member = {
-                "id": data[0],
-                "name": data[1],
-                "username": data[2]
-            }
-            return jsonify({"data": member})
+    if data == None:
+        return jsonify({"data": None})
+    else:
+        member = {
+            "id": data[0],
+            "name": data[1],
+            "username": data[2]
+        }
+        return jsonify({"data": member})
+
+
+@app.route("/api/member", methods=["POST"])
+def updateUserName():
+    if "account" in session:
+        if "password" in session:
+            loginAccount = session["account"]
+            insertVales = request.get_json()
+            updateUserName = insertVales["updateUserName"]
+
+            selectSqla = "UPDATE `member` SET `name` = %s WHERE `username` = %s;"
+            adra = (updateUserName, loginAccount)
+            mycursor.execute(selectSqla, adra)
+            mydb.commit()
+
+            input = {"name": updateUserName}
+            print(input)
+
+            return jsonify({"ok": True})
+
+    else:
+        return jsonify({"error": True})
 
 
 @app.route("/signout")

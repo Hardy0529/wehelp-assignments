@@ -146,7 +146,17 @@ body {
   align-items: baseline;
 }
 
-.register .form-container .queryUserNameShow {
+.register .form-container .queryUserName_Show {
+  padding-top: 16px;
+  text-align: center;
+  min-height: 40px;
+  font-size: 1.125rem;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--bs-primary);
+}
+
+.register .form-container .updateUserName_Show {
   padding-top: 16px;
   text-align: center;
   min-height: 40px;
